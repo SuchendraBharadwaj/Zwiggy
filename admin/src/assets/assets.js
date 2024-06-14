@@ -5,7 +5,7 @@ import profile_image from './Profile.png'
 import upload_area from './upload_area.png'
 import parcel_icon from './parcel_icon.png'
 
-export const url = 'zwiggybackend-suchendras-projects.vercel.app'
+export const url = 'https://zwiggybackend-suchendras-projects.vercel.app'
 export const currency = '₹'
 
 export const assets ={
