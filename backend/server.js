@@ -12,15 +12,30 @@ import orderRouter from "./routes/orderRoute.js"
 const app = express()
 const port = process.env.PORT || 4000;
 
+// Allowed origins
+const allowedOrigins = [
+  "https://zwiggy-rho.vercel.app",
+  "https://zwiggy-admin.vercel.app"
+];
+
+// CORS options
+const corsOptions = {
+  origin: (origin, callback) => {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+  methods: ["POST", "GET"],
+  credentials: true
+};
+
+
 
 // middlewares
 app.use(express.json())
-app.use(cors({
-    origin:["https://zwiggy-rho.vercel.app"],
-    methods : ["POST","GET"],
-    credentials: true
-    
-}));
+app.use(cors(corsOptions));
 
 // db connection
 connectDB()
